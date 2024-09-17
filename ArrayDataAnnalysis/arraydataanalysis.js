@@ -52,27 +52,22 @@
   }
  ];
 
-
  const getActiveUserStats = (users) => {
-  const oneWeekAgo = new Date();
-  oneWeekAgo.setDate(oneWeekAgo.getDate() - 7); 
-  
+  const oneWeekAgo = new Date('2024-05-17T00:00:00'); 
+
    const result = users
     
-    //Users who posted at least once in the past week
-    .filter(user =>
-      user.posts.some(post => new Date(post.timestamp) >= oneWeekAgo)
-  )
-    
-    
-    // get popular posts with at least 10 likes
+    // 1.  who posted at least once in the past week
+    .filter(user => 
+      user.posts.some(post => new Date(post.timestamp) >= oneWeekAgo) 
+    )
+    // popular posts with at least 10 likes
     .map(user => ({
       ...user,
-      popularPosts: user.posts.filter(post => post.likes >= 10)
+      popularPosts: user.posts.filter(post => post.likes >= 10) 
     }))
 
-     
-    // active user count, total popular posts, and average likes
+    // active user count, total popular posts, and total likes
     .reduce(
       (acc, user) => {
         const popularPostCount = user.popularPosts.length;
@@ -84,10 +79,8 @@
         
         return acc;
       },
-      { activeUserCount: 0, totalPopularPosts: 0, totalLikes: 0 } 
-   );
-   
-
+      { activeUserCount: 0, totalPopularPosts: 0, totalLikes: 0 }
+    );
   
   // average likes per active user
   result.averageLikesPerUser = result.activeUserCount > 0 
@@ -98,3 +91,4 @@
 };
 
 console.log(getActiveUserStats(users));
+
