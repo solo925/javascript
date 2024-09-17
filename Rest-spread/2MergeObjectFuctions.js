@@ -1,3 +1,9 @@
+/**
+ * Merges multiple objects into a single object.
+ *
+ * @param {...Object} objs - variable number of objects to merge
+ * @return {Object} a new object containing all properties from the input objects
+ */
 function mergeObjects(...objs) {
 
     // marging

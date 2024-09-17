@@ -1,3 +1,10 @@
+/**
+ * Extracts specified properties from an array of objects.
+ *
+ * @param {Object[]} objects - The array of objects to extract properties from.
+ * @param {string[]} properties - The names of the properties to extract.
+ * @return {Object[]} - An array of objects with only the specified properties.
+ */
 function extractProperties(objects, ...properties) {
     return objects.map(obj => {
         // Create a new object with only the specified properties

@@ -1,3 +1,10 @@
+/**
+ * Filters and sorts the provided arguments based on the given filter function.
+ *
+ * @param {function} filterfn - A function used to filter the arguments.
+ * @param {...*} arg - Variable number of arguments to be filtered and sorted.
+ * @return {array} The filtered and sorted array of arguments.
+ */
 function filterandSort(filterfn, ...arg) {
 
     // removing the forst elemnt filtering sorting and returning te value

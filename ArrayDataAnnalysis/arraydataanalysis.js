@@ -1,4 +1,12 @@
- const users = [
+/**
+  * Retrieves statistics about active users, including the number of active users,
+  * the total number of popular posts, and the average likes per user.
+  *
+  * @param {Array} users - An array of user objects, each containing information about the user's posts.
+  * @return {Object} An object containing the active user count, total popular posts, and average likes per user.
+  */ 
+
+const users = [
   {
     id: 1,
     name: "John",
