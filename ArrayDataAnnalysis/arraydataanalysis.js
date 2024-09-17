@@ -53,41 +53,40 @@
  ];
 
  const getActiveUserStats = (users) => {
-  const oneWeekAgo = new Date('2024-05-17T00:00:00'); 
+  const oneWeekAgo = new Date('2024-05-17T00:00:00');
 
-   const result = users
-    
-    // 1.  who posted at least once in the past week
-    .filter(user => 
-      user.posts.some(post => new Date(post.timestamp) >= oneWeekAgo) 
-    )
-    // popular posts with at least 10 likes
+  const result = users
+    .filter(user => user.posts.some(post => {
+      const postDate = new Date(post.timestamp);
+      const oneWeekAgoDate = new Date(oneWeekAgo);
+      return postDate.getFullYear() === oneWeekAgoDate.getFullYear() &&
+             postDate.getMonth() === oneWeekAgoDate.getMonth() &&
+             postDate.getDate() >= oneWeekAgoDate.getDate() - 7;
+    }))
     .map(user => ({
       ...user,
-      popularPosts: user.posts.filter(post => post.likes >= 10) 
+      popularPosts: user.posts.filter(post => post.likes >= 10)
     }))
+    .reduce((acc, user) => {
+      const popularPostCount = user.popularPosts.length;
+      const totalLikesForUser = user.popularPosts.reduce((sum, post) => sum + post.likes, 0);
 
-    // active user count, total popular posts, and total likes
-    .reduce(
-      (acc, user) => {
-        const popularPostCount = user.popularPosts.length;
-        const totalLikesForUser = user.popularPosts.reduce((sum, post) => sum + post.likes, 0);
-        
-        acc.activeUserCount += 1;
-        acc.totalPopularPosts += popularPostCount;
-        acc.totalLikes += totalLikesForUser;
-        
-        return acc;
-      },
-      { activeUserCount: 0, totalPopularPosts: 0, totalLikes: 0 }
-    );
-  
-  // average likes per active user
-  result.averageLikesPerUser = result.activeUserCount > 0 
-    ? result.totalLikes / result.activeUserCount 
+      acc.activeUserCount += 1;
+      acc.totalPopularPosts += popularPostCount;
+      acc.totalLikes += totalLikesForUser;
+
+      return acc;
+    }, { activeUserCount: 0, totalPopularPosts: 0, totalLikes: 0 });
+
+  result.averageLikesPerUser = result.activeUserCount > 0
+    ? result.totalLikes / result.activeUserCount
     : 0;
-  
-  return result;
+
+  return {
+    activeUserCount: result.activeUserCount,
+    totalPopularPosts: result.totalPopularPosts,
+    averageLikesPerUser: result.averageLikesPerUser
+  };
 };
 
 console.log(getActiveUserStats(users));
