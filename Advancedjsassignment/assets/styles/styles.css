@@ -1,0 +1,121 @@
+body {
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  text-align: center;
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+#event-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  gap: 20px;
+}
+
+.events-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.event-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 15px;
+  overflow: hidden;
+  width: 300px;
+  background-color: #fff;
+  transition: transform 0.3s;
+}
+
+.event-card:hover {
+  transform: scale(1.05);
+}
+
+.event-details button {
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.event-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.event-info {
+  padding: 15px;
+}
+
+.event-info h2 {
+  margin-top: 0;
+  font-size: 1.25em;
+}
+
+.event-info p {
+  margin: 5px 0;
+}
+
+/* For large devices (desktops) */
+/* @media (min-width: 1024px) {
+  #event-list {
+    justify-content: flex-start; /* Align items to start */
+/* gap: 30px; */
+/* } */
+/* } */
+/* 
+
+/* For tablets and medium devices */
+@media (min-width: 768px) and (max-width: 1023px) {
+  #event-list {
+    justify-content: space-between; /* Spread cards evenly */
+  }
+
+  .event-card {
+    max-width: 45%; /* Two cards per row */
+  }
+}
+
+/* For mobile devices */
+@media (max-width: 767px) {
+  #event-list {
+    flex-direction: column; /* Stack cards vertically */
+    align-items: center;
+  }
+
+  .event-card {
+    max-width: 100vw; /* Full width on mobile */
+    margin-bottom: 20px;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .event-image {
+    height: 150px;
+  }
+}
