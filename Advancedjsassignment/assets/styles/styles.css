@@ -4,9 +4,12 @@ header {
   background-color: #f8f8f8;
   padding: 20px;
   border-bottom: 1px solid #ccc;
-  /* position: fixed; */
+  position: fixed;
   width: 100%;
-  margin-bottom: 20px;
+  /* op: 0;
+  left: 0;
+  z-index: 1000;
+  transition: transform 0.6s ease-in-out;t */
 }
 
 /* Body styling to allow scrolling */
@@ -14,7 +17,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  /* padding-top: 70px; Offset for fixed header */
+  padding-top: 70px; /* Offset for fixed header */
 }
 
 /* Hidden header (for scrolling) */
