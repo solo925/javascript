@@ -190,3 +190,36 @@ document.getElementById("sort-by").addEventListener("change", sortEvents);
 
 // Initial render
 renderEvents(eventsData);
+
+
+let lastScrollTop = 0;
+let scrollTimeout;
+
+window.addEventListener('scroll', () => {
+  // Get current scroll position
+  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  // Get the header element
+  const header = document.querySelector('header');
+
+  // Determine scroll direction
+  if (scrollTop > lastScrollTop) {
+    // User is scrolling down -> hide the header
+    header.classList.add('header-hidden');
+  } else {
+    // User is scrolling up -> show the header
+    header.classList.remove('header-hidden');
+  }
+
+  // Reset the last scroll position
+  lastScrollTop = scrollTop;
+
+  // Clear any existing timeout
+  clearTimeout(scrollTimeout);
+
+  // Set a timeout to show the header after scrolling stops
+  scrollTimeout = setTimeout(() => {
+    header.classList.remove('header-hidden');
+  }, 300); // 300ms delay after the user stops scrolling
+});
+
