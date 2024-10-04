@@ -12,7 +12,7 @@
     {
       "id": "2",
       "imageUrl": "https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-      "title": "Food and Wine Expo",
+      "title": "Food and Wine Expo(edit trial)",
       "price": 75,
       "date": "September 25, 2021",
       "location": "Moscone Center, San Francisco",
@@ -89,12 +89,6 @@
       "date": "May 20-22, 2022",
       "location": "McCormick Place, Chicago",
       "company": "Google"
-    },
-    {
-      "id": "524e"
-    },
-    {
-      "id": "79bc"
     }
   ]
 }

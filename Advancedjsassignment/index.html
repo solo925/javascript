@@ -2,48 +2,50 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events Page</title>
-    <link rel="stylesheet" href="./assets/styles/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events Page</title>
+  <link rel="stylesheet" href="./assets/styles/styles.css" />
 </head>
 
 <body>
-    <header>
-        <h1>Events</h1>
-        <!-- Filter and Sort Options -->
-        <div class="controls">
-            <label for="location-filter">Filter by Location: </label>
-            <select id="location-filter">
-                <option value="all">All</option>
-            </select>
+  <header>
+    <h1>Events</h1>
+    <!-- Filter and Sort Options -->
+    <div class="controls">
+      <label for="location-filter">Filter by Location: </label>
+      <select id="location-filter">
+        <option value="all">All</option>
+      </select>
 
-            <label for="price-filter">Filter by Price: </label>
-            <select id="price-filter">
-                <option value="all">All</option>
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-            </select>
+      <label for="price-filter">Filter by Price: </label>
+      <select id="price-filter">
+        <option value="all">All</option>
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
 
-            <label for="sort-by">Sort by: </label>
-            <select id="sort-by">
-                <option value="price">Price</option>
-                <option value="date">Date</option>
-            </select>
-        </div>
+      <label for="sort-by">Sort by: </label>
+      <select id="sort-by">
+        <option value="price">Price</option>
+        <option value="date">Date</option>
+      </select>
+    </div>
 
-        <div class="favorites">
-            <h2>Favorites</h2>
-            <ul id="favorites-list"></ul>
-        </div>
-    </header>
+    <div class="favorites">
+      <h2>Favorites</h2>
+      <ul id="favorites-list"></ul>
+    </div>
+  </header>
 
-    <main>
-        <div id="events-container" class="events-container"></div>
-    </main>
+  <main>
+    <button id="add-product-btn">Add Product</button>
+    <!-- Add Product Button -->
+    <div id="events-container" class="events-container"></div>
+  </main>
 
-    <script src="./assets/js/script.js"></script>
+  <script type="module" src="./assets/js/script.js"></script>
 </body>
 
 </html>

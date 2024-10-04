@@ -1,67 +1,75 @@
 /* General header styling */
 header {
   text-align: center;
-  background-color: #f8f8f8;
+  background-color: transparent;
   padding: 20px;
   border-bottom: 1px solid #ccc;
-  position: fixed;
+  height: 100px;
   width: 100%;
-  /* op: 0;
-  left: 0;
-  z-index: 1000;
-  transition: transform 0.6s ease-in-out;t */
 }
 
-/* Body styling to allow scrolling */
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  padding-top: 70px; /* Offset for fixed header */
 }
 
-/* Hidden header (for scrolling) */
-/* .header-hidden {
-  transform: translateY(-100%);
-} */
-
-#event-list {
+/* Container for event cards */
+#events-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly; /* Equal space between cards */
   padding: 20px;
   gap: 20px;
 }
 
-.events-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.event-card {
+/* Event card styling */
+.event-item {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   text-align: center;
   padding-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  margin: 15px;
   overflow: hidden;
-  width: 300px;
+  width: 30%; /* Set card width to fit three in a row */
   background-color: #fff;
-  transition: transform 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.event-card:hover {
-  transform: scale(1.05);
+.event-item:hover {
+  transform: scale(1.05); /* Scale effect */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Enlarging shadow */
 }
 
-.event-details button {
+.event-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.event-item h3 {
+  margin: 10px 0;
+  font-size: 1.25em;
+}
+
+.event-item p {
+  margin: 5px 0;
+}
+
+/* Flexbox for buttons */
+.event-buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.event-item button {
   background-color: black;
   color: white;
   border: none;
@@ -69,66 +77,71 @@ body {
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  flex: 1;
+  margin: 0 5px;
 }
 
-.event-image {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+.event-item button:hover {
+  background-color: #333;
+  transform: scale(1.1);
 }
 
-.event-info {
-  padding: 15px;
+/* Styling the "Add Product" button to float */
+#add-product-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #28a745;
+  color: white;
+  font-size: 18px;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease,
+    opacity 0.3s ease;
+  z-index: 1000; /* Keep it on top */
 }
 
-.event-info h2 {
-  margin-top: 0;
-  font-size: 1.25em;
+#add-product-btn:hover {
+  background-color: #218838;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.event-info p {
-  margin: 5px 0;
+#add-product-btn.hidden {
+  opacity: 0; /* Hides the button when scrolling */
+  pointer-events: none; /* Prevents interaction when hidden */
 }
 
-/* For large devices (desktops) */
-/* @media (min-width: 1024px) {
-  #event-list {
-    justify-content: flex-start; /* Align items to start */
-/* gap: 30px; */
-/* } */
-/* } */
-/* 
-
-/* For tablets and medium devices */
-@media (min-width: 768px) and (max-width: 1023px) {
-  #event-list {
-    justify-content: space-between; /* Spread cards evenly */
-  }
-
-  .event-card {
-    max-width: 45%; /* Two cards per row */
-  }
+/* Filter/Sort section styling */
+.controls {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 15px;
 }
 
-/* For mobile devices */
-@media (max-width: 767px) {
-  #event-list {
-    flex-direction: column; /* Stack cards vertically */
-    align-items: center;
-  }
+.controls label {
+  font-weight: bold;
+}
 
-  .event-card {
-    max-width: 100vw; /* Full width on mobile */
-    margin-bottom: 20px;
-    margin-right: 0;
-    margin-left: 0;
-    padding: 10px;
-    box-sizing: border-box;
-    width: 100%;
-  }
+.controls select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
 
-  .event-image {
-    height: 150px;
-  }
+.controls select:hover {
+  border-color: #28a745;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.controls select:focus {
+  outline: none;
+  border-color: #28a745;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
